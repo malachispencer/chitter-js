@@ -1,10 +1,12 @@
 const express = require('express');
+const home = require('./routes/home');
 const signup = require('./routes/signup');
 const login = require('./routes/login');
 const app = express();
 
 app.set('view engine', 'ejs');
 
+app.use('/', home);
 app.use('/signup', signup);
 app.use('/login', login);
 
