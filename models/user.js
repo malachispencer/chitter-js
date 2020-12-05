@@ -10,7 +10,7 @@ class User {
   static create(name, email, password) {
     let values = [name, email, password];
 
-    const user = pool.query(
+    return pool.query(
       `INSERT INTO users 
       (name, email, password) VALUES ($1, $2, $3) 
       RETURNING user_id, name, email;`,
@@ -26,8 +26,6 @@ class User {
     .catch(error => {
       return error;
     });
-
-    return user;
   }
 }
 
