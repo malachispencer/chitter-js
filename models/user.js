@@ -29,6 +29,24 @@ class User {
       return error;
     });
   }
+
+  static async authenticate(email, password) {
+    const result = await pool.query(
+      `SELECT * FROM users
+      WHERE email = $1`,
+      [email]
+    )
+    .then(result => {
+      return result.rows[0];
+    })
+    .catch(error => {
+      return error;
+    })
+
+    if (!result) { return null; }
+  }
 }
 
 module.exports = { User };
+
+//User.authenticate('m.spencer@makers.co', '2020');
