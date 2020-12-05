@@ -1,0 +1,21 @@
+{
+  "name": "chitter",
+  "version": "1.0.0",
+  "description": "Twitter Clone",
+  "main": "app.js",
+  "scripts": {
+    "test-init": "./node_modules/jasmine/bin/jasmine.js init",
+    "test": "./node_modules/jasmine/bin/jasmine.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Malachi Spencer",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jasmine": "^3.6.3",
+    "nodemon": "^2.0.6"
+  }
+}
