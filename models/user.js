@@ -1,5 +1,5 @@
 const pool = require('../db/dbConnection');
-const { hashPassword } = require('../utils/hashPassword');
+const { hashPassword, validatePassword } = require('../utils/password');
 
 class User {
   constructor(userID, name, email) {
@@ -31,22 +31,26 @@ class User {
   }
 
   static async authenticate(email, password) {
-    const result = await pool.query(
-      `SELECT * FROM users
-      WHERE email = $1`,
-      [email]
-    )
-    .then(result => {
-      return result.rows[0];
-    })
-    .catch(error => {
-      return error;
-    })
+    const sql = `SELECT * FROM users WHERE email = $1`;
+    const values = [email];
+    
+    const dbResponse = await pool
+      .query(sql, values)
+      .then(res => { return res.rows[0]; })
+      .catch(err => { console.error(err.stack); })
 
-    if (!result) { return null; }
+    if (!dbResponse) { return null; }
+
+    const isValidPassword = await validatePassword(password, dbResponse.password);
+
+    if (!isValidPassword) { return null; }
+
+    return new User(
+      dbResponse.user_id,
+      dbResponse.name,
+      dbResponse.email
+    );
   }
 }
 
 module.exports = { User };
-
-//User.authenticate('m.spencer@makers.co', '2020');
