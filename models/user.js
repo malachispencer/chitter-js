@@ -1,4 +1,5 @@
 const pool = require('../db/dbConnection');
+const { hashPassword } = require('../utils/hashPassword');
 
 class User {
   constructor(userID, name, email) {
@@ -7,8 +8,9 @@ class User {
     this.email = email;
   }
 
-  static create(name, email, password) {
-    let values = [name, email, password];
+  static async create(name, email, password) {
+    const encryptedPassword = await hashPassword(password);
+    const values = [name, email, encryptedPassword];
 
     return pool.query(
       `INSERT INTO users 
