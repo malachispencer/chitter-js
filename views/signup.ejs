@@ -3,11 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Sign Up | Chitter</title>
 </head>
 <body>
   <div>
-    Sign Up
+    <h1>Sign Up</h1>
+  </div>
+
+  <div>
+    <form action="/users" method="post">
+      <input type="text" name="name" placeholder="Enter your name" autocomplete="off" required>
+      <input type="email" name="email" placeholder="Enter your email" autocomplete="off" required>
+      <input type="password" name="password" placeholder="Enter your password" autocomplete="off" required>
+      <input type="submit" value="Submit">
+    </form>
   </div>
 </body>
 </html>
