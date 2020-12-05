@@ -3,7 +3,7 @@ const router = express.Router();
 const { User } = require('../models/user');
 
 router.get('/new', (req, res) => {
-  res.render('login');
+  res.render('login', { messages: req.flash('loginFail') });
 });
 
 router.post('/', async (req, res) => {
@@ -13,6 +13,7 @@ router.post('/', async (req, res) => {
   );
 
   if (!user) {
+    req.flash('loginFail', 'Incorrect login details, please try again.');
     res.redirect('/sessions/new');
   }
 });
