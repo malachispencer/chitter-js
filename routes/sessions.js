@@ -15,6 +15,9 @@ router.post('/', async (req, res) => {
   if (!user) {
     req.flash('loginFail', 'Incorrect login details, please try again.');
     res.redirect('/sessions/new');
+  } else {
+    req.session['user_id'] = user.userID;
+    res.redirect('/peeps');
   }
 });
 
