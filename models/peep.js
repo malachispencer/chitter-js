@@ -1,3 +1,4 @@
+const { render } = require('ejs');
 const pool = require('../db/dbConnection');
 const { User } = require('./user');
 
@@ -62,9 +63,32 @@ class Peep {
       .catch(err => { console.error(err.stack) })
   }
 
-  // static async getAll() {
+  static async getAll() {
+    const sql = `
+      SELECT p.peep_id, p.text, 
+      u.name, u.user_id,
+      to_char(time, 'HH:MI') as time, 
+      to_char(date, 'DD/MM/YYYY') as date
+      FROM peeps AS p
+      INNER JOIN users AS u
+      ON p.user_id = u.user_id;
+    `
+    const dbResponse = await pool
+      .query(sql)
+      .then(res => { return res.rows; })
+      .catch(err => { console.error(err.stack); })
 
-  // }
+    const peeps = dbResponse.map(peep => {
+      return new Peep(
+        peep.peep_id,
+        peep.text,
+        peep.name,
+        peep.user_id,
+        peep.time,
+        peep.date
+      )
+    });
+
+    return peeps;
+  }
 }
-
-//Peep.create('userID update', '13:35', 26)
