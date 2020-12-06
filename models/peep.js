@@ -71,7 +71,8 @@ class Peep {
       to_char(date, 'DD/MM/YYYY') as date
       FROM peeps AS p
       INNER JOIN users AS u
-      ON p.user_id = u.user_id;
+      ON p.user_id = u.user_id
+      ORDER BY p.peep_id DESC;
     `
     const dbResponse = await pool
       .query(sql)
@@ -92,3 +93,5 @@ class Peep {
     return peeps;
   }
 }
+
+module.exports = { Peep };
