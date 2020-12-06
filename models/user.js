@@ -51,6 +51,24 @@ class User {
       dbResponse.email
     );
   }
+
+  static async findByID(userID) {
+    const sql = `SELECT * FROM users WHERE user_id = $1`;
+    const values = [userID];
+
+    const dbResponse = await pool
+      .query(sql, values)
+      .then(res => { return res.rows[0]; })
+      .catch(err => { console.error(err.stack); })
+
+    if (!dbResponse) { return null; }
+    
+    return new User(
+      dbResponse.user_id,
+      dbResponse.name,
+      dbResponse.email
+    )
+  }
 }
 
 module.exports = { User };
