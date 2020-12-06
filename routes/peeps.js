@@ -26,4 +26,9 @@ router.post('/', async (req, res) => {
   res.send(peeps);
 });
 
+router.get('/initialize', async (req, res) => {
+  const peeps = await Peep.getAll();
+  res.send(peeps);
+});
+
 module.exports = router;
