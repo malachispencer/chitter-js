@@ -9,7 +9,12 @@
   <div>
     <h1>Log In</h1>
   </div>
-  <%= messages %>
+
+  <%= loginForPeeps %>
+  <%= loginFail %> 
+  <%= loggedOut %>
+  <%= signOutFail %>
+
   <div>
     <form action="/sessions" method="post">
       <input type="email" name="email" placeholder="Enter your email" autocomplete="off" required>
