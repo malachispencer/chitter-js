@@ -3,18 +3,15 @@ const router = express.Router();
 const { User } = require('../models/user');
 
 router.get('/new', (req, res) => {
-  res.render('signUp');
+  res.render('signUp', { messages: req.flash('loggedOut') });
 });
 
 router.post('/', async (req, res) => {
-
   const newUser = await User.create(
     req.body.name,
     req.body.email,
     req.body.password
   )
-
-  console.log(newUser);
 
   res.redirect('/users/signed-up');
 });

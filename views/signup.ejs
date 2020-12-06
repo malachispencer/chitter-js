@@ -10,6 +10,8 @@
     <h1>Sign Up</h1>
   </div>
 
+  <%= messages %>
+
   <div>
     <form action="/users" method="post">
       <input type="text" name="name" placeholder="Enter your name" autocomplete="off" required>
@@ -17,6 +19,10 @@
       <input type="password" name="password" placeholder="Enter your password" autocomplete="off" required>
       <input type="submit" value="Submit">
     </form>
+  </div>
+
+  <div>
+    <p>Already have an account? Log in <a href="/sessions/new">here</a></p>
   </div>
 </body>
 </html>

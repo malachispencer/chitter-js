@@ -21,4 +21,10 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/destroy', (req, res) => {
+  req.session['user_id'] = undefined;
+  req.flash('loggedOut', 'Successfully logged out.');
+  res.redirect('/');
+});
+
 module.exports = router;
