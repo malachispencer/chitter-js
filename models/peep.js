@@ -21,7 +21,7 @@ class Peep {
       peep_id, 
       text,
       user_id, 
-      to_char(time, 'HH:MI') as time, 
+      to_char(time, 'HH24:MI') as time, 
       to_char(date, 'DD/MM/YYYY') as date;
     `;
 
@@ -67,7 +67,7 @@ class Peep {
     const sql = `
       SELECT p.peep_id, p.text, 
       u.name, u.user_id,
-      to_char(time, 'HH:MI') as time, 
+      to_char(time, 'HH24:MI') as time, 
       to_char(date, 'DD/MM/YYYY') as date
       FROM peeps AS p
       INNER JOIN users AS u
