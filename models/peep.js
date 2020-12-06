@@ -43,7 +43,7 @@ class Peep {
       peepFromDB.date
     );
 
-    console.log(peep)
+    return peep;
   }
 
   static async getPosterName(userID, peepID) {
