@@ -1,4 +1,3 @@
-const { render } = require('ejs');
 const pool = require('../db/dbConnection');
 const { User } = require('./user');
 
