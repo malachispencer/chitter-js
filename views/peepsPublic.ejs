@@ -22,40 +22,6 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
     crossorigin="anonymous">
   </script>
-  <script>
-
-    $(document).ready(function() {
-
-      getPeepsOnStartup();
-
-      function getPeepsOnStartup() {
-        $.ajax({
-          url: '/peeps/initialize',
-          method: 'get'
-        })
-        .done(data => {
-          displayPeeps(data);
-        });
-      }
-
-      function displayPeeps(peeps) {
-        $('#peeps-container').empty();
-
-        peeps.forEach(peep => {
-          $('#peeps-container').append(wrapPeep(peep));
-          $(window).scrollTop(0);
-        });
-      }
-
-      function wrapPeep(peep) {
-        const peepText = `<h4>${peep.text}</h4>`;
-        const peepInfo = `<p>${peep.userName} - ${peep.timePosted} - ${peep.datePosted}<hr>`;
-        const peepWrapped = $('<div class="peep"></div>').append(peepText).append(peepInfo);
-        return peepWrapped;
-      }
-      
-    });
-
-  </script>
+  <script src="/js/peepsPublicFE.js"></script>
 </body>
 </html>
