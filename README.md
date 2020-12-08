@@ -10,13 +10,13 @@ Twitter clone built in JavaScript, Node.js, Express.js, jQuery, PostgreSQL and H
 
 3) Connect to the newly created database using ```\c chitter```.
 
-4) Use the commands in the remaining files of ```db/migrations``` to created the tables.
+4) Use the commands in the remaining files of ```db/migrations``` to create the tables.
 
 ## Usage
 
 1) Run ```npm install``` to install all of the dependencies locally.
 
-2) Set up the database using the *Setting Up The Database* instructins outlined above.
+2) Set up the database using the *Setting Up The Database* instructions outlined above.
 
 3) Ensure you are in the root of the application.
 
