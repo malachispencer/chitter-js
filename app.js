@@ -16,6 +16,7 @@ app.use(session({
   resave: true
 }));
 
+app.use(express.static('public'));
 app.use(flash());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/', home);
